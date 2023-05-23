@@ -35,10 +35,20 @@ const addAll = (a, b, c) => {
     }
     return a + b;
 };
-// Default params
-const sumAll = (a, b, c = 2) => {
+// Default param value
+const sumAll = (a = 23, b, c = 2) => {
     return a + b + c;
 };
 logMessage(addAll(2, 3, 2));
 logMessage(addAll(2, 3));
 logMessage(sumAll(2, 3));
+logMessage(sumAll(undefined, 3));
+logMessage(sumAll(undefined, 3, undefined));
+// Rest parameters
+const total = (a, ...numbers) => {
+    return a + numbers.reduce((prev, current) => prev + current);
+};
+logMessage(total(1, 2, 3, 40));
+const createError = (errMsg) => {
+    throw new Error(errMsg);
+};

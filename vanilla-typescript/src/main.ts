@@ -43,7 +43,6 @@ type Guitarist = {
 type userId = stringOrNumber;
 
 // Literal types
-
 let myName: 'Dave';
 let userName: 'Dave' | 'John' | 'Amy'
 userName = 'Amy';
@@ -85,11 +84,24 @@ const addAll = (a: number, b: number, c?: number): number => {
   return a + b;
 }
 
-// Default params
-const sumAll = (a: number, b: number, c: number = 2): number => {
+// Default param value
+const sumAll = (a: number = 23, b: number, c: number = 2): number => {
   return a + b + c;
 } 
 
 logMessage(addAll(2,3,2));
 logMessage(addAll(2,3));
 logMessage(sumAll(2,3));
+logMessage(sumAll(undefined, 3));
+logMessage(sumAll(undefined, 3, undefined));
+
+// Rest parameters
+const total = (a: number, ...numbers: number[]): number => {
+  return a + numbers.reduce((prev, current) => prev + current);
+}
+
+logMessage(total(1, 2, 3, 40));
+
+const createError = (errMsg: string) => {
+  throw new Error(errMsg);
+}
