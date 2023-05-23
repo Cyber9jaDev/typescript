@@ -1,6 +1,6 @@
 interface Guitarist {
   name: string,
-  active?: boolean,
+  active: boolean,
   albums: ( string | number )[];
 }
 
@@ -12,7 +12,7 @@ let evh: Guitarist = {
 
 let jp: Guitarist = {
   name: 'Jimmy',
-  // active: true,
+  active: true,
   albums: [ 'The Wall', 'The Dark Side of the Rain', 1984, 5150 ]
 }
 

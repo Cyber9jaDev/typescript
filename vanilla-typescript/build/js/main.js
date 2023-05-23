@@ -6,7 +6,7 @@ let evh = {
 };
 let jp = {
     name: 'Jimmy',
-    // active: true,
+    active: true,
     albums: ['The Wall', 'The Dark Side of the Rain', 1984, 5150]
 };
 const greetGuitarist = (guitarist) => {
