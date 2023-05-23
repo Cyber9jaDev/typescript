@@ -52,3 +52,23 @@ logMessage(total(1, 2, 3, 40));
 const createError = (errMsg) => {
     throw new Error(errMsg);
 };
+const infinite = () => {
+    let i = 1;
+    while (true) {
+        i++;
+        if (i > 100)
+            break;
+    }
+};
+// Custom type guard
+const isNumber = (value) => {
+    return typeof value === 'number' ? true : false;
+};
+// Use of the never type
+const numberOrString = (value) => {
+    if (typeof value === 'string')
+        return 'string';
+    if (isNumber(value))
+        return 'number';
+    return createError('This should never happen');
+};

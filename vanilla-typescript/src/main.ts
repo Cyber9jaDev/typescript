@@ -102,6 +102,27 @@ const total = (a: number, ...numbers: number[]): number => {
 
 logMessage(total(1, 2, 3, 40));
 
-const createError = (errMsg: string) => {
+const createError = (errMsg: string): never => {
   throw new Error(errMsg);
+}
+
+const infinite = () => {
+  let i: number = 1;
+
+  while (true) {
+    i++;
+    if(i > 100) break;
+  }
+}
+
+// Custom type guard
+const isNumber = (value: any): boolean => {
+  return typeof value === 'number' ? true : false;
+}
+
+// Use of the never type
+const numberOrString = (value: string | number) : string => {
+  if(typeof value === 'string') return 'string';
+  if(isNumber(value))  return 'number';
+  return createError('This should never happen');
 }
