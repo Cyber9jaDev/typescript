@@ -1,15 +1,44 @@
 "use strict";
-let evh = {
-    name: 'Eddie',
-    active: false,
-    albums: [1984, 5150, 'The Dark Side of the Moon', 'The Wall']
+// interface Guitarist {
+//   name: string,
+//   active: boolean,
+//   albums: ( string | number )[];
+// }
+// Literal types
+let myName;
+let userName;
+userName = 'Amy';
+// Functions
+const add = (a, b) => {
+    return a + b;
 };
-let jp = {
-    name: 'Jimmy',
-    active: true,
-    albums: ['The Wall', 'The Dark Side of the Rain', 1984, 5150]
+const logMessage = (message) => {
+    console.log(message);
 };
-const greetGuitarist = (guitarist) => {
-    return `Hello ${guitarist.name}!`;
+logMessage('Hello World');
+logMessage(add(2, 3));
+// logMessage(add('2',3));
+let subtract = function (c, d) {
+    return c - d;
 };
-console.log(greetGuitarist(jp));
+// interface mathFunction{
+//   (a: number, b: number): number
+// }
+let multiply = function (c, d) {
+    return c * d;
+};
+logMessage(multiply(3, 22));
+// Optional parameters
+const addAll = (a, b, c) => {
+    if (typeof c !== 'undefined') {
+        return a + b + c;
+    }
+    return a + b;
+};
+// Default params
+const sumAll = (a, b, c = 2) => {
+    return a + b + c;
+};
+logMessage(addAll(2, 3, 2));
+logMessage(addAll(2, 3));
+logMessage(sumAll(2, 3));
