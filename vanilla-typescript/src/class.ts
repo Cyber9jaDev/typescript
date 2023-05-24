@@ -20,5 +20,4 @@ class Coder {
 
 const Dave = new Coder('Dave', 'Rock', 23);
 console.log(Dave.getAge());
-// console.log(Dave.age);
-// console.log(Dave.lang);
+// console.log(Dave.age);// console.log(Dave.lang);
