@@ -98,8 +98,37 @@ class Peeps{
 const John = new Peeps('John');
 const Jane = new Peeps('Jane');
 const Jack = new Peeps('Jack');
+const Jackal = new Peeps('Jackal');
 
 console.log(Jack.id);
 console.log(Jane.id);
 console.log(John.id);
 console.log(Peeps.count);
+console.log(Peeps.getCount());
+
+//////////////////////////////////////////////////////////////
+class Bands{
+  private dataState: string[];
+
+  constructor(){
+    this.dataState = [];
+  }
+
+  public get data() : string[] {
+    return this.dataState;
+  }
+
+  public set data(value : string[]) {
+    if(Array.isArray(value) && value.every(element => typeof element === 'string')){
+      this.dataState = value;
+      return;
+    } else throw new Error('Param is not an array of strings')
+  }
+}
+
+const myBands = new Bands();
+myBands.data = ['Pink Floyd', 'Queen', 'Metallica'];
+console.log(myBands.data);
+
+
+/////////////////////////////////////////////////////////////
