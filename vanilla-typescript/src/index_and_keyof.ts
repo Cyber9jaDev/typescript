@@ -1,27 +1,29 @@
 // Index Signatures
 
+
 // interface TransactionObj{
-//   Pizza: number;
-//   Books: number;
-//   Job: number;
+//   // readonly [index: string] : number;
+//   [index: string] : number;
 // }
 
 interface TransactionObj{
-  // readonly [index: string] : number;
-  [index: string] : number;
+  readonly[index: string]: number;
+  Pizza: number;
+  Books: number;
+  Job: number;
 }
 
-const todaysTransaction: TransactionObj = {
+const todaysTransactions: TransactionObj = {
   Pizza: -10,
   Books: -5,
   Job: 50,
 }
 
-// console.log(todaysTransaction.Pizza);
-// console.log(todaysTransaction['Pizza']);
+// console.log(todaysTransactions.Pizza);
+// console.log(todaysTransactions['Pizza']);
 
 let prop: string = 'Pizza';
-console.log(todaysTransaction[prop]);
+// console.log(todaysTransactions[prop]);
 
 const todaysNet = (transactions: TransactionObj): number => {
   let total = 0;
@@ -31,4 +33,60 @@ const todaysNet = (transactions: TransactionObj): number => {
   return total;
 }
 
-console.log(todaysNet(todaysTransaction));
+// console.log(todaysNet(todaysTransactions));
+
+// todaysTransactions.Pizza = 100;
+// console.log(todaysTransactions['Dave']);
+
+// ////////////////////////////////////////////////////////////////////
+interface Student{
+  // [key: string]: number | string | number[] | undefined,
+  name: string, 
+  GPA: number,
+  classes?: number[]
+}
+
+const student: Student = {
+  name: 'Dave',
+  GPA: 3.5,
+  classes: [100, 200]
+}
+
+// console.log(student.test);
+
+// for (const key in student){
+//   console.log(`${key}:${student[key]}`);
+// }
+
+Object.keys(student).map((key) => {
+  // console.log(`${key}: ${student[key]}`);
+  console.log(student[key as keyof typeof student]);
+});
+
+// Just like a reference to Student Interface
+const logStudentKey = (student: Student, key: keyof Student): void => {
+  console.log(`Student ${key}: ${student[key]}`);
+}
+
+logStudentKey(student, 'classes'); // Student classes: [100, 200]
+
+/////////////////////////////////////////////////////////////////////
+
+// interface Incomes{
+//   [key: string]: number;
+// }
+
+type Streams = 'salary'| 'bonus' | 'sidehustle';
+
+type Incomes = Record<Streams, number | string>
+
+const monthlyIncomes: Incomes = {
+  salary: 500,
+  bonus: 100,
+  sidehustle: 250
+}
+
+// Instead of providing an index signature for Incomes, we can use keyof
+for (const revenue in monthlyIncomes) {
+  console.log(monthlyIncomes[revenue as keyof Incomes])
+}
