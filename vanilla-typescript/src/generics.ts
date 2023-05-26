@@ -301,4 +301,5 @@ const userArray = [
   }
 ]
 
-console.log(getUsersProperty(userArray, 'name'));
+console.log(getUsersProperty(userArray, 'company'));
+
