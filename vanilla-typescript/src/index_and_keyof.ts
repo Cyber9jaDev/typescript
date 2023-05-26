@@ -1,6 +1,5 @@
 // Index Signatures
 
-
 // interface TransactionObj{
 //   // readonly [index: string] : number;
 //   [index: string] : number;
@@ -8,15 +7,16 @@
 
 interface TransactionObj{
   readonly[index: string]: number;
-  Pizza: number;
-  Books: number;
-  Job: number;
+  // Pizza: number;
+  // Books: number;
+  // Job: number;
 }
 
 const todaysTransactions: TransactionObj = {
   Pizza: -10,
   Books: -5,
   Job: 50,
+  // k: 30
 }
 
 // console.log(todaysTransactions.Pizza);
@@ -33,7 +33,7 @@ const todaysNet = (transactions: TransactionObj): number => {
   return total;
 }
 
-// console.log(todaysNet(todaysTransactions));
+console.log(todaysNet(todaysTransactions));
 
 // todaysTransactions.Pizza = 100;
 // console.log(todaysTransactions['Dave']);
@@ -60,12 +60,12 @@ const student: Student = {
 
 Object.keys(student).map((key) => {
   // console.log(`${key}: ${student[key]}`);
-  console.log(student[key as keyof typeof student]);
+  // console.log(student[key as keyof typeof student]);
 });
 
 // Just like a reference to Student Interface
 const logStudentKey = (student: Student, key: keyof Student): void => {
-  console.log(`Student ${key}: ${student[key]}`);
+  // console.log(`Student ${key}: ${student[key]}`);
 }
 
 logStudentKey(student, 'classes'); // Student classes: [100, 200]
@@ -88,5 +88,5 @@ const monthlyIncomes: Incomes = {
 
 // Instead of providing an index signature for Incomes, we can use keyof
 for (const revenue in monthlyIncomes) {
-  console.log(monthlyIncomes[revenue as keyof Incomes])
+  // console.log(monthlyIncomes[revenue as keyof Incomes])
 }

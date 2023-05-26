@@ -4,6 +4,7 @@ const todaysTransactions = {
     Pizza: -10,
     Books: -5,
     Job: 50,
+    // k: 30
 };
 // console.log(todaysTransactions.Pizza);
 // console.log(todaysTransactions['Pizza']);
@@ -16,6 +17,7 @@ const todaysNet = (transactions) => {
     }
     return total;
 };
+console.log(todaysNet(todaysTransactions));
 const student = {
     name: 'Dave',
     GPA: 3.5,
@@ -27,11 +29,11 @@ const student = {
 // }
 Object.keys(student).map((key) => {
     // console.log(`${key}: ${student[key]}`);
-    console.log(student[key]);
+    // console.log(student[key as keyof typeof student]);
 });
 // Just like a reference to Student Interface
 const logStudentKey = (student, key) => {
-    console.log(`Student ${key}: ${student[key]}`);
+    // console.log(`Student ${key}: ${student[key]}`);
 };
 logStudentKey(student, 'classes'); // Student classes: [100, 200]
 const monthlyIncomes = {
@@ -41,5 +43,5 @@ const monthlyIncomes = {
 };
 // Instead of providing an index signature for Incomes, we can use keyof
 for (const revenue in monthlyIncomes) {
-    console.log(monthlyIncomes[revenue]);
+    // console.log(monthlyIncomes[revenue as keyof Incomes])
 }
