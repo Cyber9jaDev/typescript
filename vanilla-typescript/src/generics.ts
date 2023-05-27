@@ -1,6 +1,27 @@
 const echo = <T>(arg: T): T => arg;
 
-const isObject = <T>(arg: T):boolean => {
+function pickObjectKeys<T, K extends keyof T>(obj: T, keys: K[]){
+  let result = {} as Pick<T, K>;
+  // for (const key of keys){
+  //   if(key in obj){
+  //     // result[key] = obj[key];
+  //   }
+  // }
+}
+
+const language = {
+  name: "TypeScript",
+  age: 8,
+  extensions: ['ts', 'tsx']
+}
+pickObjectKeys(language, ['age', 'extensions'])
+
+const ageAndExtensions = pickObjectKeys(language, ['age', 'extensions', 'name']);
+
+
+/////////////////////////////////////////////////////////////////////
+
+const isObject = <T>(arg: T): boolean => {
   return(typeof arg === 'object' && !Array.isArray(arg) && arg !== null);
 };
 
@@ -11,7 +32,7 @@ console.log(isObject({ name: 'John' }));
 console.log(isObject(null));
 
 
-const isTrue = <T>(arg: T): { arg: T, is: boolean } => {
+const isTrue = <T>( arg: T ): { arg: T, is: boolean } => {
   // Array
   if(Array.isArray(arg) && !arg.length){
     return { arg, is: false }
@@ -27,7 +48,6 @@ const isTrue = <T>(arg: T): { arg: T, is: boolean } => {
 }
 
 isTrue({ name: 'John' });
-
 
 ///////////////////////////////////////////////////////////////////////
 
@@ -301,5 +321,5 @@ const userArray = [
   }
 ]
 
-console.log(getUsersProperty(userArray, 'company'));
+// console.log(getUsersProperty(userArray, 'company'));
 

@@ -1,5 +1,21 @@
 "use strict";
 const echo = (arg) => arg;
+function pickObjectKeys(obj, keys) {
+    let result = {};
+    // for (const key of keys){
+    //   if(key in obj){
+    //     // result[key] = obj[key];
+    //   }
+    // }
+}
+const language = {
+    name: "TypeScript",
+    age: 8,
+    extensions: ['ts', 'tsx']
+};
+pickObjectKeys(language, ['age', 'extensions']);
+const ageAndExtensions = pickObjectKeys(language, ['age', 'extensions', 'name']);
+/////////////////////////////////////////////////////////////////////
 const isObject = (arg) => {
     return (typeof arg === 'object' && !Array.isArray(arg) && arg !== null);
 };
@@ -275,4 +291,4 @@ const userArray = [
         }
     }
 ];
-console.log(getUsersProperty(userArray, 'company'));
+// console.log(getUsersProperty(userArray, 'company'));
