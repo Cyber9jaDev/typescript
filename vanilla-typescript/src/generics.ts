@@ -71,6 +71,7 @@ const checkBoolValue = <T>(arg: T): BoolCheck<T> => {
   return { value: arg, is: !!arg }
 }
 
+
 ///////////////////////////////////////////////////////////////////////
 interface HasID{
   id: number
@@ -321,5 +322,31 @@ const userArray = [
   }
 ]
 
-// console.log(getUsersProperty(userArray, 'company'));
+console.log(getUsersProperty(userArray, 'username'));
+
+
+// ///////////////////////////////
+// Generics in a class
+
+class stateObject<T>{
+  private data: T;
+
+  constructor(value: T){
+    this.data = value
+  }
+
+  get state() : T {
+    return this.data
+  }
+
+  set state(value: T) {
+    this.data = value;
+  }
+}
+
+const store = new stateObject('John');
+console.log(store.state);
+store.state = 'Dave';
+store.state = 234;
+
 

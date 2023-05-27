@@ -291,4 +291,21 @@ const userArray = [
         }
     }
 ];
-// console.log(getUsersProperty(userArray, 'company'));
+console.log(getUsersProperty(userArray, 'username'));
+// ///////////////////////////////
+// Generics in a class
+class stateObject {
+    constructor(value) {
+        this.data = value;
+    }
+    get state() {
+        return this.data;
+    }
+    set state(value) {
+        this.data = value;
+    }
+}
+const store = new stateObject('John');
+console.log(store.state);
+store.state = 'Dave';
+store.state = 234;
