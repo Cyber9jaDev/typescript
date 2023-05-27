@@ -311,3 +311,4 @@ store.state = 'Dave';
 const myState = new stateObject([15]);
 myState.state = (['Dave', 42, true]);
 console.log(myState.state);
+//////////////////////////////////////////////////////////
