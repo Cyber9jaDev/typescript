@@ -308,4 +308,6 @@ class stateObject {
 const store = new stateObject('John');
 console.log(store.state);
 store.state = 'Dave';
-store.state = 234;
+const myState = new stateObject([15]);
+myState.state = (['Dave', 42, true]);
+console.log(myState.state);
