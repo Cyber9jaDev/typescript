@@ -311,4 +311,46 @@ store.state = 'Dave';
 const myState = new stateObject([15]);
 myState.state = (['Dave', 42, true]);
 console.log(myState.state);
-//////////////////////////////////////////////////////////
+function identity(arg) {
+    return arg;
+}
+let myIdentity = identity;
+console.log(myIdentity({ name: 'Grace' }));
+function identity1(arg) {
+    return arg;
+}
+let myIdentity1 = identity1;
+console.log(myIdentity1({ name: 'Grace' }));
+let myIdentity1_ = identity1;
+console.log(myIdentity1_(20));
+let myIdentity1__ = identity1;
+console.log(myIdentity1__('John'));
+let myIdentity1___ = identity1;
+console.log(myIdentity1___(true));
+//*********************** Generic Classes *******************************//
+/** A class definition with a generic parameter */
+class Queue {
+    constructor() {
+        this.data = [];
+    }
+    push(item) {
+        this.data.push(item);
+    }
+    pop() {
+        return this.data.shift();
+    }
+}
+const queue = new Queue();
+queue.push(0);
+queue.push(43434);
+console.log(queue.data);
+// Another Example 
+function reverse(items) {
+    let return_items = [];
+    for (let i = items.length - 1; i >= 0; i--) {
+        return_items.push(items[i]);
+    }
+    return return_items;
+}
+let sample = [0];
+console.log(reverse(sample));

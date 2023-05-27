@@ -327,7 +327,6 @@ console.log(getUsersProperty(userArray, 'username'));
 
 // ///////////////////////////////
 // Generics in a class
-
 class stateObject<T>{
   private data: T;
 
@@ -352,8 +351,69 @@ const myState = new stateObject<(string|number|boolean)[]>([15]);
 myState.state = (['Dave', 42, true]);
 console.log(myState.state);
 
-//////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+// Create a generic function
+interface GenericIdentityFn{
+  <T>(arg: T): T;
+}
+
+function identity<T>(arg: T): T{
+  return arg;
+}
+
+let myIdentity: GenericIdentityFn = identity;
+console.log(myIdentity({name: 'Grace'}));
+
+// Let the generic parameter to be a parameter of the whole interface
+interface GenericIdentityFn1<T>{
+  (arg: T): T
+}
+
+function identity1<T>(arg: T): T {
+  return arg;
+}
+
+let myIdentity1: GenericIdentityFn1<object> = identity1;
+console.log(myIdentity1({name: 'Grace'}));
+let myIdentity1_: GenericIdentityFn1<number> = identity1;
+console.log(myIdentity1_(20));
+let myIdentity1__: GenericIdentityFn1<string> = identity1;
+console.log(myIdentity1__('John'));
+let myIdentity1___: GenericIdentityFn1<boolean> = identity1;
+console.log(myIdentity1___(true));
 
 
+//*********************** Generic Classes *******************************//
+/** A class definition with a generic parameter */
 
+class Queue<T>{
+  data:T[]= [];
 
+  push(item: T){
+    this.data.push(item);
+  }
+
+  pop(): T | undefined {
+    return this.data.shift();
+  }
+}
+
+const queue = new Queue<number>();
+queue.push(0);
+queue.push(43434)
+console.log(queue.data);
+
+// Another Example 
+
+function reverse<T>(items: T[]): T[]{
+  let return_items = [];
+
+  for(let i= items.length - 1; i >= 0; i--){
+    return_items.push(items[i])
+  }
+  return return_items;
+}
+
+let sample = [0];
+console.log(reverse(sample));
