@@ -105,6 +105,7 @@ const createNewAssign = (title: string, points: number) => {
 }
 
 type newAssign = ReturnType<typeof createNewAssign>
+
 const tsAssign: newAssign = createNewAssign('Utility types', 1000);
 console.log(tsAssign);
 
@@ -117,3 +118,28 @@ const tsAssign2: newAssign = createNewAssign(...assignArgs);
 console.log(tsAssign2);
 
 // ******************* Awaited Utility Type ******************** //
+interface User{
+  id: number,
+  name: string,
+  username: string,
+  email: string
+}
+
+const fetchUsers = async (): Promise<User[]> => {
+  const data = await fetch('https://jsonplaceholder.typicode.com/users')
+    .then((res) => {
+      return res.json()
+    })
+    .catch((err) => {
+      if(err instanceof Error){
+        console.log(err.message);
+      }
+    })
+  return data;
+}
+
+type FetchUsersReturnType = Awaited<ReturnType<typeof fetchUsers>>
+
+fetchUsers().then((res) => {
+  console.log(res);
+});
