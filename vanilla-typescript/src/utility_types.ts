@@ -92,5 +92,28 @@ type adjustedGrade = Exclude<LetterGrades, 'U'>
 type highGrades = Extract<LetterGrades, 'A' | 'B'>
 
 
-// ******************* NonNullable  Utility Type ********************//
+// ******************* NonNullable Utility Type ********************//
 type AllPossibleGrades = 'Dave' | 'John' | null | undefined
+
+type NamesOnly = NonNullable<AllPossibleGrades>
+
+// ******************* ReturnType  Utility Type ********************//
+// type newAssign = { title: string, points: number }
+
+const createNewAssign = (title: string, points: number) => {
+  return { title, points }
+}
+
+type newAssign = ReturnType<typeof createNewAssign>
+const tsAssign: newAssign = createNewAssign('Utility types', 1000);
+console.log(tsAssign);
+
+// ******************* Parameter Utility Type ******************** //
+type AssignParams = Parameters<typeof createNewAssign>
+
+const assignArgs: AssignParams = ['Generics', 100];
+
+const tsAssign2: newAssign = createNewAssign(...assignArgs);
+console.log(tsAssign2);
+
+// ******************* Awaited Utility Type ******************** //

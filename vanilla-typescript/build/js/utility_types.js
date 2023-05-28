@@ -45,3 +45,14 @@ const preview = {
     title: 'Final Project',
 };
 console.log(preview);
+// ******************* ReturnType  Utility Type ********************//
+// type newAssign = { title: string, points: number }
+const createNewAssign = (title, points) => {
+    return { title, points };
+};
+const tsAssign = createNewAssign('Utility types', 1000);
+console.log(tsAssign);
+const assignArgs = ['Generics', 100];
+const tsAssign2 = createNewAssign(...assignArgs);
+console.log(tsAssign2);
+// ******************* Awaited Utility Type ******************** //
