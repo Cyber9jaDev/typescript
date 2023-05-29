@@ -1,37 +1,40 @@
 import ListItem from "./ListItem";
 
 interface List{
-  list: ListItem[],
-  load(): void,
-  save(): void,
-  clearList(): void,
-  addItem(itemObj: ListItem ): void,
-  removeItem(id: string): void
+  list: ListItem[],     //Getter
+  load(): void,         // Void Function
+  save(): void,         // Void Function
+  clearList(): void,      // Void Function
+  addItem(itemObj: ListItem ): void,      // Void Function
+  removeItem(id: string): void      // Void Function
 } 
 
 export default class FullList implements List{
   // Only one instance of FullList is required, we need to refer to this class
   static instance: FullList = new FullList();
 
-  // There will only be one instance of this class created
-  private constructor( private _list: ListItem[]= []){}
-
-  get list():  ListItem[] {
-    return this._list
+  // Create a singleton instance of FullList
+  private constructor(private _list: ListItem[]= []){ 
+    // this._list = _list;
   }
 
+  get list():  ListItem[] { return this._list }
+
+  // Create a new list item for each one that was stringified and saved in the local storage and populating the list again 
   load(): void {
     const storedList: string | null = localStorage.getItem('list');
+
     if(typeof storedList !== 'string') return
 
-    const parsedList: { _id: string, _item: string, checked: boolean }[] = JSON.parse(storedList);
+    const parsedList: { _id: string, _item: string, _checked: boolean }[] = JSON.parse(storedList);
     
     parsedList.forEach(itemObj => {
-      const newListItem = new ListItem(itemObj._id, itemObj._item, itemObj.checked);
+      const newListItem = new ListItem(itemObj._id, itemObj._item, itemObj._checked);
+      FullList.instance.addItem(newListItem);
     });
   }
 
-  save(): void {
+  save(): void { 
     localStorage.setItem('list', JSON.stringify(this._list));
   }
 
