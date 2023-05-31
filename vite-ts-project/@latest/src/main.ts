@@ -12,8 +12,9 @@ const initApp = (): void => {
   itemEntryForm.addEventListener('submit', (event: SubmitEvent): void => {
     event.preventDefault();
 
-    const input = document.getElementById('clearItemsButton') as HTMLButtonElement;
+    const input = document.getElementById('newItem') as HTMLInputElement;
     const newEntryText: string = input.value.trim();
+    console.log(newEntryText);
     if(!newEntryText) return;
 
     const itemId: number = fullList.list.length ? parseInt(fullList.list[fullList.list.length - 1].id) + 1 : 1;
