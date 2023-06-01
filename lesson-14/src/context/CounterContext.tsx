@@ -28,6 +28,7 @@ const useCounterContext = (initState: StateType) => {
 
   const increment = () => dispatch({type: 'INCREMENT'});
   const decrement = () => dispatch({type: 'DECREMENT'});
+  
   const handleTextInput = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: 'NEW_INPUT', payload: e.target.value});
   }
