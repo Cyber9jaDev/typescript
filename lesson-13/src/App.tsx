@@ -1,4 +1,4 @@
-import { KeyboardEvent, MouseEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import { KeyboardEvent, MouseEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 interface User{
   id: number,
@@ -7,7 +7,7 @@ interface User{
 
 type fibFunc = (n: number) => number;
 
-const myNum = 27;
+const myNum = 11;
 
 const fib: fibFunc = (n: number) => n < 2 ? n  : fib(n-1) + fib(n-2);
 
@@ -15,6 +15,11 @@ const fib: fibFunc = (n: number) => n < 2 ? n  : fib(n-1) + fib(n-2);
 function App() {
   const [count, setCount] = useState<number>(0);
   const [users, setUsers] = useState<User[] | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  console.log(inputRef?.current);
+  console.log(inputRef?.current?.value);
+
 
   useEffect(() => {
     console.log('Mounting');
@@ -36,6 +41,7 @@ function App() {
       <h1>{count}</h1>
       <button onClick={addTwo}>Add</button>
       <h2>{result}</h2>
+      <input ref={inputRef} type="text" />
     </div>
   )
 }
