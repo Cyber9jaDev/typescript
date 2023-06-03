@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { useMemo, useReducer, createContext } from 'react';
+import { useMemo, useReducer, createContext, ReactElement } from 'react';
 
 export type CartItemType = { 
   name: string, 
@@ -65,7 +65,7 @@ const reducer = (state: CartStateType, { type, payload }: ReducerAction): CartSt
     const itemExists: CartItemType | undefined = state.cart.find(item => item.sku === sku);
 
     if(!itemExists){
-      throw new Error("Item must exist in order to update quantity")
+      throw new Error("Item must exist in order to update quantity");
     }
 
     const updatedItem: CartItemType = { ...itemExists, qty };
@@ -86,11 +86,11 @@ const useCartContext = (initCartState: CartStateType) => {
   const [state, dispatch] = useReducer(reducer, initCartState);
 
   const REDUCER_ACTIONS = useMemo(() => {
-    return REDUCER_ACTION_TYPE
-  }, [])
+    return REDUCER_ACTION_TYPE;
+  }, []);
 
   const totalItems: number = state.cart.reduce((previousValue, cartItem) => {
-    return previousValue + cartItem.qty
+    return previousValue + cartItem.qty;
   }, 0);
 
   const totalPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
@@ -103,7 +103,7 @@ const useCartContext = (initCartState: CartStateType) => {
     const itemA = Number(a.sku.slice(-4));
     const itemB = Number(b.sku.slice(-4));
     return itemA -  itemB;
-  });
+  });   
 
   return { dispatch, totalItems, totalPrice, cart, REDUCER_ACTIONS };
 };
@@ -119,3 +119,14 @@ const initCartContextState: UseCartContextType = {
 }
 
 export const CartContext = createContext<UseCartContextType>(initCartContextState);
+
+type ChildrenType = { children?: ReactElement | ReactElement[] }
+
+export const CartProvider = ({ children }: ChildrenType ): ReactElement => {
+
+  return(
+    <CartContext.Provider value={useCartContext(initCartState)}>
+      { children }
+    </CartContext.Provider>
+  )
+}
