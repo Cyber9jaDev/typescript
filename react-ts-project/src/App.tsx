@@ -1,13 +1,14 @@
 import React from 'react';
 import TieFighter from './components/TieFighter'
-import AwesomeProvider from './context/AwesomeProvider';
+import { AwesomeContextProvider } from './context/AwesomeContext';
 
 function App() {
   return (
-    <AwesomeProvider>
+    <AwesomeContextProvider>
+      <h2>React Context</h2>
       <TieFighter />
-    </AwesomeProvider>
+    </AwesomeContextProvider>
   )
 }
 
-export default App
+export default App;
