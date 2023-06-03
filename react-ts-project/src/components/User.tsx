@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 
 
@@ -25,8 +25,8 @@ const User = () => {
     <div>
       <button onClick={handleLogin}>Login</button>
       <button onClick={handleLogout}>Logout</button>
-      <span> User name is {userContext?.user?.username} </span>
-      <span> User email is {userContext?.user?.email}</span>
+      <span> User name is {userContext.user?.username} </span>
+      <span> User email is {userContext.user?.email}</span>
     </div>
   )
 }
