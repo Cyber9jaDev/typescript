@@ -1,21 +1,23 @@
-import React from 'react';
-import TieFighter from './components/TieFighter'
-import { AwesomeContextProvider } from './context/AwesomeContext';
-import { UserContextProvider } from './context/UserContext';
-import User from './components/User';
+import { useState } from 'react';
+import Cart from './components/Cart';
+import ProductList from './components/ProductList';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
-  return (
+  const [viewCart, setViewCart] = useState<boolean>(false);
+  
+  const pageContent = viewCart ? <Cart /> : <ProductList />;
+
+  const content = (
     <>
-      <AwesomeContextProvider>
-        <h2>React Context</h2>
-        <TieFighter />
-      </AwesomeContextProvider>
-      <UserContextProvider>
-        <User />
-      </UserContextProvider>
+      <Header viewCart={viewCart} setViewCart={setViewCart}  />
+      { pageContent }
+      <Footer viewCart={viewCart} />
     </>
-  )
+  );
+
+  return content;
 }
 
 export default App;
