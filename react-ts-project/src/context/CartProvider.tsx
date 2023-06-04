@@ -123,12 +123,11 @@ export const CartContext = createContext<UseCartContextType>(initCartContextStat
 type ChildrenType = { children?: ReactElement | ReactElement[] }
 
 export const CartProvider = ({ children }: ChildrenType ): ReactElement => {
-
   return(
     <CartContext.Provider value={useCartContext(initCartState)}>
       { children }
     </CartContext.Provider>
-  )
+  );
 }
 
 export default CartContext;
