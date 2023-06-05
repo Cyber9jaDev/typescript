@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 import useCart from '../hooks/useCart';
 import useProducts from '../hooks/useProduct';
-import { UseProductsContextType } from '../context/ProductsProvider';
 import Product from './Product';
 
 useCart
