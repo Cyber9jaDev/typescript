@@ -1,2 +1,11 @@
-console.log("Hello");
-console.log("ted");
+function welcomePerson(person: { firstName: string, lastName: string }) {
+  console.log(`Hey ${person.firstName} ${person.lastName}`);
+  return `Hey ${person.firstName} ${person.lastName}`;
+}
+
+const james = {
+  firstName: "James",
+  lastName: "Quick"
+};
+
+welcomePerson(james);
